@@ -77,11 +77,9 @@
             <div class="col-md-3">
                 <p class="lead">in-season-local-regional produce to your door, every monday: because mondays don't have to suck</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Citrus</a>
-                    <a href="#" class="list-group-item">Berries</a>
-                    <a href="#" class="list-group-item">Stone Fruit</a>
-                    <a href="#" class="list-group-item">Melons</a>
-                    <a href="#" class="list-group-item">Tropical</a>
+                    {% for cat in categories %}
+                    <a href="#" class="list-group-item">{{ cat.category_name }}</a>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -117,16 +115,22 @@
                  </div><!--end of carosouel holder div-->
 
 <!--ECOMMERCE ITEMS - POPULATE WITH JAVASCRIPT ONLY-->
-    {% for i in products %}
-        <div class="card" style="width: 18rem;">
-          <img src="{{ i.image.url }}" width="200px" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ i.product_name }}</h5>
-            <p class="card-text">{{ i.description }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+    <div class="row mt-5">
+        <h3>Products</h3>
+        {% for i in products %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+              <img src="{{ i.image.url }}" width="200px" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ i.product_name }}</h5>
+                <p class="card-text">{{ i.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
         </div>
     {% endfor %}
+    </div>
+
      
 
 
