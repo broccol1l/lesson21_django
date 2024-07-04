@@ -30,7 +30,7 @@ class ProductModel(models.Model):
 
 
 # HW
-class NewsCategory(models.Model):
+class NewsCategoryModel(models.Model):
     category_name = models.CharField(max_length=40)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -41,11 +41,12 @@ class NewsCategory(models.Model):
         verbose_name = "NewCategory"
         verbose_name_plural = "NewCategories"
 
-class News(models.Model):
+class NewsModel(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField()
-    category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(NewsCategoryModel, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    news_image = models.FileField(upload_to="product_image", null=True, blank=True)
 
     def __str__(self):
         return self.title

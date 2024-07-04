@@ -4,12 +4,12 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 
-from products.views import home_page, about_page
+from products.views import home_page, about_page, news_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
-    path('about/', about_page)
+    path('about/', news_page) #HOMEWORK
 ]
 
 
