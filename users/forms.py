@@ -12,6 +12,6 @@ class UserRegistrationForm(UserCreationForm):
 
 # Форма для для логина
 
-class UserLoginForm(UserRegistrationForm):
+class UserLoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
