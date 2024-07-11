@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 
 from products.models import ProductModel, NewsModel, CategoryModel, CartModel
+
+from products.handler import bot
 def home_page(request):
     products = ProductModel.objects.all()
     categories = CategoryModel.objects.all()
@@ -19,6 +21,11 @@ def news_page(request):
 def not_found_page(request):
     return render(request, 'notfound.html')
 
+def favourites_page(request):
+    products = ProductModel.objects.all()
+    categories = CategoryModel.objects.all()
+    context = {'products': products, 'categories': categories}
+    return render(request, "favourites.html", context=context)
 
 def search(request):
     # Пользователь отправляет данные (e.g. Iphone12)
@@ -58,7 +65,9 @@ def user_cart(request):
             main_text += f'\n Товар: {i.user_product}\n' \
                          f'\n Кол-во: {i.user_product_quantity}\n' \
                          f'\n ID пользователя: {i.user_id}\n' \
-                         f'\n Цена: {i.user_product.price}\n'
-            pass
+                         f'\n Цена: ${i.user_product.price}\n'
+            bot.send_message(-1002172665304, main_text)
+            cart.delete()
+            return redirect('/')
     else:
         return render(request, 'cart.html', context={'cart': cart})
