@@ -27,6 +27,11 @@ def favourites_page(request):
     context = {'products': products, 'categories': categories}
     return render(request, "favourites.html", context=context)
 
+def favourites_news_page(request, id):
+    news = NewsModel.objects.get(id=id)
+    context = {'news': news}
+    return render(request, 'single-news.html', context=context)
+
 def search(request):
     # Пользователь отправляет данные (e.g. Iphone12)
     if request.method == "POST":

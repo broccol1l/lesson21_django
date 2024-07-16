@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from products.views import (home_page, news_page, not_found_page, search, product_page,
-                            add_product_to_cart, user_cart, favourites_page)
+                            add_product_to_cart, user_cart, favourites_page, favourites_news_page)
 from users.views import register_view, login_view, profile_view, logout_view
 
 
@@ -22,7 +22,8 @@ urlpatterns = [
     path("notfound", not_found_page, name="notfound"),
     path("add_to_cart/<int:id>", add_product_to_cart),
     path('user_cart', user_cart, name='user_cart'),
-    path('favourites', favourites_page, name='favourites')
+    path('favourites', favourites_page, name='favourites'),
+    path('favourite_news/<int:id>', favourites_news_page, name='favourite_news')
 ]
 
 
