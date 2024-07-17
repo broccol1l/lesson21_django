@@ -4,14 +4,14 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 
-from products.views import (home_page, news_page, not_found_page, search, product_page,
+from products.views import (HomePage, news_page, not_found_page, search, product_page,
                             add_product_to_cart, user_cart, favourites_page, favourites_news_page)
 from users.views import register_view, login_view, profile_view, logout_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page, name='home'),
+    path('', HomePage.as_view(), name='home'),
     path('about/', news_page), #HOMEWORK
     path("signup", register_view, name='signup'),
     path("login", login_view, name='login'),
